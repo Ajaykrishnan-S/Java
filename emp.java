@@ -1,66 +1,77 @@
 import java.util.*;
 class emp
-{	
-	int empno,salary;
-	String empname;
-	void read()
+{
+	Scanner s=new Scanner(System.in);
+	int empid;
+	double salary;
+	String name,address;
+	public emp(int empid,double salary,String name,String address)
+	{
+		this.empid=empid;
+		this.salary=salary;
+		this.name=name;
+		this.address=address;
+		
+	}}
+	class teacher extends emp
+	{
+		String department;
+		String subject;
+		public teacher(int empid,double salary,String name,String address,String department,String subject)
+		{
+			super(empid,salary,name,address);
+			this.department=department;
+			this.subject=subject;
+		}
+		void display()
+		{
+			System.out.println("empid: "+empid);
+			System.out.println("name: "+name);
+			System.out.println("salary: "+salary);
+			System.out.println("address: "+address);
+			System.out.println("department: "+department);
+			System.out.println("subject: "+subject);
+		}
+		
+		
+	}
+	
+
+class Main
+{
+	public static void main(String args[])
 	{
 		
-		Scanner sc=new Scanner(System.in);
-		System.out.println("Enter employee no. ..");
-		empno=sc.nextInt();
-		System.out.println("Enter employee name...");
-		empname=sc.nextLine();
-		System.out.println("Enter employee Salary...");
-		salary=sc.nextInt();
-		 
-	}
-	void search()
-	{
 		Scanner s=new Scanner(System.in);
-		empno=s.nextInt();
-		int i,f=0;
-		for(i=0;i<3;i++)
+		System.out.println("enter the number of teacher: ");
+		int N= s.nextInt();
+		teacher tt[]=new teacher[N];
+		for(int i = 0; i < N; i++)
 		{
-			if(empno == obj[i])			
-				f=1;
-			
+
+            		System.out.print("Empid: ");
+            		int empid = s.nextInt();
+
+            		System.out.print("Name: ");
+            		String name = s.next();
+
+            		System.out.print("Salary: ");
+            		double salary = s.nextDouble();
+            		
+
+            		System.out.print("Address: ");
+            		String address = s.next();
+
+            		System.out.print("Department: ");
+            		String department = s.next();
+            		System.out.print("Subject: ");
+            		String subject=s.next();
+            		 tt[i]=new teacher(empid,salary,name,address,department,subject);
 		}
-		if(f==1)
-			obj[i].display();
-		
-	}
-	void display()
-	{
-		System.out.println("empno : "+empno);
-		System.out.println("empname : "+empname);
-		System.out.println("salary : "+salary);
-	}
-	
-	
-	
-	
-	
-	
-	public static void main(String arg[])
-	
-	{
-		emp obj[]=new emp[3];
-		int i;
-		for(i=0;i<3;i++)
+		System.out.println("_________details of teachers_________");
+		for(int i=0;i<N;i++)
 		{
-			obj[i]=new emp();
-		}
-		for(i=0;i<3;i++)
-		{
-			obj[i].read();
-		}
-		System.out.println("Enter employee no to search if it exit . ..");
-		for(i=0;i<3;i++)
-		{
-			obj[i].search();
-			
-			
+			tt[i].display();
 		}
 	}
 }
